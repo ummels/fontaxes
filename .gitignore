@@ -1,0 +1,15 @@
+.DS_Store
+*.bak
+*.old
+*.tmp
+*.log
+*.aux
+*.out
+*.toc
+*.dvi
+*.sty
+*.drv
+*.tex
+*.tmproj
+*.tar.gz
+*.synctex.gz
