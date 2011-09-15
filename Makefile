@@ -15,11 +15,11 @@ tempfiles := $(pkg).aux $(pkg).log $(pkg).toc $(pkg).out
 # default rule
 
 .PHONY: all
-all: $(pkg).sty
+all: $(pkg).sty test-$(pkg).tex
 
 # rule for building the LaTeX package
 
-$(pkg).sty: $(pkg).ins $(pkg).dtx
+$(pkg).sty test-$(pkg).tex: $(pkg).ins $(pkg).dtx
 	$(PDFLATEX) $(pkg).ins
 
 # rule for building the documentation
@@ -37,7 +37,7 @@ install: all
 	$(INSTALLDIR) $(TEXMFDIR)/tex/latex/$(pkg)
 	$(INSTALLDATA) $(pkg).sty $(TEXMFDIR)/tex/latex/$(pkg)
 	$(INSTALLDIR) $(TEXMFDIR)/doc/latex/$(pkg)
-	$(INSTALLDATA) $(pkg).pdf $(TEXMFDIR)/doc/latex/$(pkg)
+	$(INSTALLDATA) $(pkg).pdf test-$(pkg).tex $(TEXMFDIR)/doc/latex/$(pkg)
 
 .PHONY: uninstall
 uninstall:
@@ -48,7 +48,7 @@ uninstall:
 
 .PHONY: clean
 clean:
-	$(RM) $(pkg).sty
+	$(RM) $(pkg).sty test-$(pkg).tex
 	$(RM) $(tempfiles)
 
 # delete files on error
