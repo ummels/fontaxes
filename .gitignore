@@ -10,6 +10,8 @@
 *.sty
 *.drv
 *.tex
+*.pdf
+!fontaxes.pdf
 *.tmproj
 *.tar.gz
 *.synctex.gz
