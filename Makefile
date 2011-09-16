@@ -18,7 +18,7 @@ tempfiles := $(pkg).aux $(pkg).log $(pkg).toc $(pkg).out
 .PHONY: all
 all: latex
 
-# rule for building the LaTeX package
+# rules for building the LaTeX package
 
 .PHONY: latex
 latex: $(pkg).sty test-$(pkg).tex
@@ -26,7 +26,7 @@ latex: $(pkg).sty test-$(pkg).tex
 $(pkg).sty test-$(pkg).tex: $(pkg).ins $(pkg).dtx
 	$(PDFLATEX) $(pkg).ins
 
-# rule for building the documentation
+# rules for building the documentation
 
 .PHONY: doc
 doc: $(pkg).pdf
@@ -36,6 +36,14 @@ $(pkg).pdf: $(pkg).dtx
 	(while grep -s 'Rerun to get' $(pkg).log; do \
 	  $(PDFLATEX) $(pkg).dtx; \
 	done)
+
+# rules for building a tarball for CTAN
+
+.PHONY: ctan
+ctan: $(pkg).tar.gz
+
+$(pkg).tar.gz: $(pkg).ins $(pkg).dtx $(pkg).pdf README.ctan
+	$(TAR) -cz -s '/README\.ctan/README/' $^ > $@
 
 # rules for (un)installing everything
 
@@ -51,15 +59,7 @@ uninstall:
 	$(RM) $(TEXMFDIR)/tex/latex/$(pkg)
 	$(RM) $(TEXMFDIR)/doc/latex/$(pkg)
 
-# rule for building a tarball for CTAN
-
-.PHONY: ctan
-ctan: $(pkg).tar.gz
-
-$(pkg).tar.gz: $(pkg).ins $(pkg).dtx $(pkg).pdf README.ctan
-	$(TAR) -cz -s '/README\.ctan/README/' $^ > $@
-
-# rules for cleaning the source tree
+# rule for cleaning the source tree
 
 .PHONY: clean
 clean:
