@@ -15,14 +15,20 @@ tempfiles := $(pkg).aux $(pkg).log $(pkg).toc $(pkg).out
 # default rule
 
 .PHONY: all
-all: $(pkg).sty test-$(pkg).tex
+all: latex
 
 # rule for building the LaTeX package
+
+.PHONY: latex
+latex: $(pkg).sty test-$(pkg).tex
 
 $(pkg).sty test-$(pkg).tex: $(pkg).ins $(pkg).dtx
 	$(PDFLATEX) $(pkg).ins
 
 # rule for building the documentation
+
+.PHONY: doc
+doc: $(pkg).pdf
 
 $(pkg).pdf: $(pkg).dtx
 	$(PDFLATEX) $(pkg).dtx
