@@ -27,11 +27,29 @@
 %<package>\NeedsTeXFormat{LaTeX2e}
 %<package>\ProvidesPackage{fontaxes}[2011/09/16 v1.0 Font selection axes]
 %<*driver>
-\documentclass[draft]{ltxdoc}
-\usepackage{array,booktabs}
-\newcommand*\pkg[1]{\textsf{#1}}
+\documentclass{ltxdoc}
+
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[scaled=1.05]{inconsolata}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{floatrow}
+\usepackage{hyperref}
+\hypersetup{
+  bookmarksnumbered,
+  colorlinks=false,
+  pdfborder={0 0 0},
+  pdftitle={Axes, axes, axes},
+  pdfauthor={Andreas B\"uhmann, Michael Ummels}
+}
+\usepackage{microtype}
+
+\newcommand*\pkg[1]{\mbox{#1}}
 \newcommand*\acro[1]{#1}
 \newcommand*\axis[1]{\textit{#1}}
+\floatsetup[table]{capposition=top}
+
 \begin{document}
 \DocInput{fontaxes.dtx}
 \end{document}
@@ -56,13 +74,14 @@
 %   Right brace   \}     Tilde         \~}
 %
 % \GetFileInfo{fontaxes.dtx}
+%
 % \title{Axes, axes, axes}
-% \author{Andreas B\"uhmann}
+% \author{Andreas B\"uhmann \and Michael Ummels}
 % \date{\fileversion\ -- \filedate}
 % \maketitle
 %
 % \begin{abstract}
-%   The package \pkg{fontaxes} simulates multiple independent font selection
+%   The \pkg{fontaxes} package simulates multiple independent font selection
 %   axes on top of certain single \acro{NFSS} axes: \axis{base family},
 %   \axis{figure style}, and \axis{figure alignment} on top of \axis{family};
 %   \axis{primary shape} and \axis{secondary shape} on top of \axis{shape};
@@ -72,60 +91,90 @@
 %
 % \tableofcontents
 %
+% \section{Introduction}
+%
+% The introduction of the New Font Selection Scheme (\acro{NFSS}) has
+% greatly simplified the usage of \LaTeX\ with fonts different from the
+% Computer Modern fonts originally designed for \TeX. However, the \acro{NFSS}
+% has some limitations. In particular, it~defines only one axis for the font
+% shape, which caters for both the \emph{shape} of the font (e.g.\ upright,
+% italic or slanted) and the \emph{case} of the font (e.g.\ upper-lower case
+% and small-caps). For example, if the current font shape is italic, then
+% selecting small capitals using |\scshape| or |\textsc| will revert to
+% an upright shape, even if the font has italic small capitals
+%
+% The \pkg{fontaxes} package tries to remedy the deficiencies of the \acro{NFSS}
+% by simulating multiple axes on top of single \acro{NFSS} axes. In particular,
+% it replaces the single \acro{NFSS} shape axis by a primary and a secondary
+% shape axis, catering for the shape and the case of the font, respectively.
+% Moreover, the package introduces three new axes to deal
+% with different \emph{figure versions}, which are provided by many
+% professional fonts.
+%
 % \section{Usage}
+%
+% Usually, this package will be included by a package that provides
+% support for a certain font family. Nevertheless, you can load
+% the package manually by adding
+% \begin{quote}
+%   |\usepackage{fontaxes}|
+% \end{quote}
+% to the preamble of your document. This redefines and makes available
+% certain font selection commands, which are described in the rest of
+% this section.
 %
 % \subsection{Shape}
 %
-% \pkg{fontaxes} splits \LaTeX's single shape axis into two ones: the primary
-% shape axis (|n|, |it|, etc.) and the secondary shape axis (|ulc|, |sc|,
-% etc.)\footnote{Still lacking better names.}.
+% The \pkg{fontaxes} package splits the \acro{NFSS}'s single shape axis into
+% two: the primary shape axis (|n|, |it|, etc.) and the secondary shape axis
+% (|ulc|, |sc|, etc.).
 %
 % \DescribeMacro\upshape %
 % \DescribeMacro\itshape %
 % \DescribeMacro\slshape %
 % \DescribeMacro\swshape %
-% The customary commands |\upshape|, |\itshape|, and |\slshape| are redefined
-% to access the primary axis only. For access to a swash shape the command
-% |\swshape| is added.
+% The commands |\upshape|, |\itshape|, and |\slshape| are redefined
+% to access the primary axis only. For access to a swash shape, the command
+% |\swshape| has been added.
 %
 % \DescribeMacro\ulcshape %
 % \DescribeMacro\scshape %
 % \DescribeMacro\sscshape %
 % The commands |\scshape| and |\sscshape| (spaced small caps) access the
-% secondary axis. To return from any small-caps shape to upper and lower case
-% a command |\ulcshape| is introduced.
+% secondary axis. To return from any small-caps shape to upper-lower case,
+% you can use the command |\ulcshape|.
 %
 % \DescribeMacro\fontprimaryshape %
 % \DescribeMacro\fontsecondaryshape %
-% All these commands update the shape axes using the low-level commands
+% All these commands update the two shape axes using the low-level commands
 % |\fontprimaryshape|\marg{value} and |\fontsecondaryshape|\marg{value}.
 %
 % \DescribeMacro\swdefault %
 % \DescribeMacro\sscdefault %
 % \DescribeMacro\ulcdefault %
-% If you would like to change which values are used by the various commands
+% If you want to change which values are used by the various commands
 % |\|\meta{abbr}|shape|, redefine the corresponding |\|\meta{abbr}|default|.
-% The additional |\swdefault|, |\sscdefault|, and |\ulcdefault| are provided
-% with their default values |sw|, |ssc|, and |ulc|.
+% The additional commands |\swdefault|, |\sscdefault|, and |\ulcdefault| are
+% provided with their default values |sw|, |ssc|, and |ulc|, respectively.
 %
 % \subsection{Figure version}
 %
-% Different figure versions are often implemented as additional families
-% (e.g., |MinionPro|$\{|-OsF|, |-LF|, |-TOsF|, |-TLF|\}$\footnote{We are
-% planning to encode the figure version in the font shape instead.}; or |pplj|,
-% |pplx|).
-% \pkg{fontaxes} splits off the axes \axis{figure style} and \axis{figure
-%   alignment}, which leaves the \axis{base family} (|MinionPro| or |ppl|).
+% Different figure versions are usually implemented as different font families
+% (e.g.\ |MinionPro-{OsF,LF,TOsF,TLF}| or |ppl{j,x}|).
+% The \pkg{fontaxes} package splits off the axes \axis{figure style} and
+% \axis{figure alignment}, which leaves the \axis{base family} (e.g.\ 
+% |MinionPro| or |ppl|).\pagebreak
 %
 % \changes{v0.2}{2005/05/04}{Rename figures switching commands
-%   |\|\meta{\dots}|fig|.}  \DescribeMacro\txfigures %
+%   |\|\meta{\dots}|fig|.}
+% \DescribeMacro\txfigures %
 % \DescribeMacro\lnfigures %
 % \DescribeMacro\tbfigures %
 % \DescribeMacro\prfigures %
-% \pkg{fontaxes} knows two figure styles, |text| and |lining| (accessible via
-% |\txfigures| and |\lnfigures|), and two modes of figure alignment, |tabular|
-% and |proportional| (accessible via the switches |\tbfigures| and
-% |\prfigures|).
+% The \pkg{fontaxes} package knows two figure styles, |text| and |lining|
+% (accessible via |\txfigures| and |\lnfigures|), and two modes of figure
+% alignment, |tabular| and |proportional| (accessible via the switches
+% |\tbfigures| and |\prfigures|).
 %
 % \DescribeMacro\fontfigurestyle %
 % \DescribeMacro\fontfigurealignment %
@@ -134,29 +183,28 @@
 %
 % \DescribeMacro\fontbasefamily %
 % If you want to change the font family without changing the figure version,
-% use |\fontbasefamily|\marg{value}. (All these commands require a succeeding
-% |\selectfont| to make the changes take effect, just as the standard
-% \acro{NFSS} axes do.)
+% use |\fontbasefamily|\marg{value}. (All these commands require a successive
+% |\selectfont| to make the changes take effect.)
 %
-% For choosing the figure versions to be used in math mode you can use the
-% corresponding axis \axis{math figure alignment}. Note, there currently is no
-% means for changing the figure style used in math.
+% For choosing the figure versions to be used in math mode, you can use the
+% corresponding axis \axis{math figure alignment}. Note that there is
+% currently no means for changing the figure style used in math.
 %
 % \subsection{Math version}
 %
 % \DescribeMacro\boldmath %
 % \DescribeMacro\unboldmath %
 % By default, \LaTeX\ provides two math versions, |normal| and |bold|, as well
-% as commands |\boldmath| and |\unboldmath| for switching between them.
-% \pkg{fontaxes} redefines these commands to operate on the axis \axis{math
-% weight}.
+% as commands |\boldmath| and |\unboldmath| for switching between them. The
+% \pkg{fontaxes} packages redefines these commands to operate on the axis
+% \axis{math weight}.
 %
 % \DescribeMacro\tabularmath %
 % \DescribeMacro\proportionalmath %
 % A second axis \axis{math figure alignment} is introduced that allows you to
 % switch between |tabular| and |proportional| figures using |\tabularmath| and
 % |\proportionalmath|. (This assumes the presence of additional math versions
-% |tabular| and |boldtabular|. \pkg{fontaxes} will copy the setups of math
+% |tabular| and |boldtabular|; the package will copy the setups of math
 % versions |normal| and |bold| at the end of the preamble in case you do not
 % provide your own declarations.)
 %
@@ -165,23 +213,22 @@
 % You can directly assign values to the axes using the low-level commands
 % |\mathweight|\marg{value} and |\mathfigurealignment|\marg{value}.
 %
-% \bigskip %
 % Table~\ref{tab:cmds} summarizes which commands set which values on which
 % axes.\par
 % \newcommand\nextaxis{\addlinespace[1\jot]}%
 % \begin{table}\centering
-% \begin{tabular}{@{}lll@{}}
+% \begin{tabular}{@{}llll@{}}
 % \toprule
-% command & axis & value\\
+% Command & Axis & Value & Default\\
 % \midrule
-% |\upshape|   & |\fontprimaryshape|    & |\updefault| \\
-% |\itshape|   &                        & |\itdefault| \\
-% |\slshape|   &                        & |\sldefault| \\
-% |\swshape|   &                        & |\swdefault| \\
+% |\upshape|   & |\fontprimaryshape|    & |\updefault| & |n| \\
+% |\itshape|   &                        & |\itdefault| & |it| \\
+% |\slshape|   &                        & |\sldefault| & |sl| \\
+% |\swshape|   &                        & |\swdefault| & |sw| \\
 % \nextaxis
-% |\ulcshape|  & |\fontsecondaryshape|  & |\ulcdefault| \\
-% |\scshape|   &                        & |\scdefault| \\
-% |\sscshape|  &                        & |\sscdefault| \\
+% |\ulcshape|  & |\fontsecondaryshape|  & |\ulcdefault| & |ulc| \\
+% |\scshape|   &                        & |\scdefault| & |sc| \\
+% |\sscshape|  &                        & |\sscdefault| & |ssc| \\
 % \midrule
 % |\txfigures| & |\fontfigurestyle|     & |text| \\
 % |\lnfigures| &                        & |lining| \\
@@ -189,7 +236,7 @@
 % |\tbfigures| & |\fontfigurealignment| & |tabular| \\
 % |\prfigures| &                        & |proportional| \\
 % \nextaxis
-% ---          & |\fontbasefamily| \\
+% \meta{none}  & |\fontbasefamily| & \meta{font-dependent}\\
 % \midrule
 % |\boldmath|    & |\mathweight|          & |bold| \\
 % |\unboldmath|  &                        & |normal| \\
@@ -198,7 +245,7 @@
 % |\proportionalmath| &                   & |proportional| \\
 % \bottomrule
 % \end{tabular}
-% \caption{Author commands set values on axes}
+% \caption{Summary of commands}
 % \label{tab:cmds}
 % \end{table}
 %
@@ -211,45 +258,33 @@
 % \DescribeMacro\liningfigures %
 % \DescribeMacro\tabularfigures %
 % \DescribeMacro\proportionalfigures %
-% Similar to the well-known |\textit|, |\textsc|, etc., this package provides
-% the following commands that apply the font change to their argument only.
-% For example, |\textsw|\marg{text} is roughly equivalent to |{\swshape|
-%   \meta{text}|}| (but automatically adds italic corrections).
+% Similar to the well-known |\textit|, |\textsc|, etc.\ this package provides
+% commands |\textsw|, |\textssc|, |\textulc|, |\textfigures|, |\liningfigures|,
+% |\tabularfigures| and |\proportionalfigures| that take one argument and
+% apply the font change only to the argument.
+% For example, |\textsw|\marg{text} is roughly equivalent to
+% |{\swshape|\meta{text}|}| (but automatically adds italic corrections).
 %
-% \medskip\noindent
-% \begin{tabular}{@{}ll@{}}
-% command & corresponding switch(es) \\
-% \nextaxis
-% |\textsw|           & |\swshape| \\
-% |\textssc|          & |\sscshape| \\
-% |\textulc|         & |\ulcshape| \\
-% \nextaxis
-% |\textfigures|         & |\txfigures| \\
-% |\liningfigures|       & |\lnfigures| \\
-% |\tabularfigures|      & |\tbfigures \tabularmath| \\
-% |\proportionalfigures| & |\prfigures \proportionalmath| \\
-% \end{tabular}
-%
-% \medskip %
 % \DescribeMacro\figureversion %
 % The command |\figureversion|\marg{options} allows easy switching of multiple
 % aspects of figures simultaneously. It takes as an argument a comma-separated
 % list of one or more of the following options:
-%
-% \medskip\noindent
-% \begin{tabular}{@{}ll@{}}
-% option & effect \\
-% \nextaxis
-% |text|, |osf|          & |\txfigures| \\
-% |lining|, |lf|         & |\lnfigures| \\
-% |tabular|, |tab|       & |\tbfigures \tabularmath| \\
-% |proportional|, |prop| & |\prfigures \proportionalmath| \\
+% \begin{quote}
+% \begin{tabular}{@{}ll}
+% |text|, |osf| & for text figures,\\
+% |lining|, |lf| & for lining figures,\\
+% |tabular|, |tab| & for tabular figures,\\
+% |proportional|, |prop| & for proportional figures.
 % \end{tabular}
+% \end{quote}
+% For example, |\figureversion{lf,tab}| selects tabular lining figures.
 %
+% \iffalse
 % \section{Naming conventions}
 %
 % How to name your font families and shapes so they will work with this
 % package. (To be done \dots)
+% \fi
 %
 % \StopEventually{}
 %
