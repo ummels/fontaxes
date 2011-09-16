@@ -97,13 +97,13 @@
 % greatly simplified the usage of \LaTeX\ with fonts different from the
 % Computer Modern fonts originally designed for \TeX. However, the \acro{NFSS}
 % has some limitations. In particular, it~defines only one axis for the font
-% shape, which caters for both the \emph{shape} of the font (e.g.\ upright,
-% italic or slanted) and the \emph{case} of the font (e.g.\ upper-lower case
+% shape, which caters for both the actual \emph{shape} of the font (e.g.\
+% upright, italic or slanted) and the \emph{case} of the font (e.g.\ mixed case
 % and small-caps). For example, if the current font shape is italic, then
 % selecting small capitals using |\scshape| or |\textsc| will revert to
 % an upright shape, even if the font has italic small capitals
 %
-% The \pkg{fontaxes} package tries to remedy the deficiencies of the \acro{NFSS}
+% The \pkg{fontaxes} package alleviates the deficiencies of the \acro{NFSS}
 % by simulating multiple axes on top of single \acro{NFSS} axes. In particular,
 % it replaces the single \acro{NFSS} shape axis by a primary and a secondary
 % shape axis, catering for the shape and the case of the font, respectively.
@@ -113,9 +113,7 @@
 %
 % \section{Usage}
 %
-% Usually, this package will be included by a package that provides
-% support for a certain font family. Nevertheless, you can load
-% the package manually by adding
+% You can load this package by adding
 % \begin{quote}
 %   |\usepackage{fontaxes}|
 % \end{quote}
