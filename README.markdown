@@ -34,7 +34,7 @@ Afterwards, you may need to regenerate the file database:
 License
 -------
 
-Copyright (c) 2007 by Andreas Bühmann
+Copyright (c) 2007 by Andreas Bühmann  
 Copyright (c) 2011 by Michael Ummels <michael.ummels@rwth-aachen.de>
 
 The LaTeX support files contained in this software may be distributed
