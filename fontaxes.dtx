@@ -56,7 +56,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{716}
+% \CheckSum{719}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -330,6 +330,14 @@
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
+% \end{macro}
+%
+% \changes{v1.0}{2011/09/16}{Added compatibility macro}
+% \begin{macro}{\noscshape}
+%   Provide an alias for compatibility with the \pkg{slantsc} package
+%    \begin{macrocode}
+\let\noscshape\ulcshape
+%    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\swdefault}
