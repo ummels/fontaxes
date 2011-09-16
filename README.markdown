@@ -1,10 +1,10 @@
 fontaxes - Additional font axes for LaTeX
 =========================================
 
-The fontaxes package adds several new font axes on top of the New Font
-Selection Scheme (NFSS). In particular, it splits the shape axis into
-a primary and a secondary shape axis, and it adds three new axes to
-deal with the different figure versions, offered by many professional fonts.
+The fontaxes package adds several new font axes on top of LaTeX's New Font
+Selection Scheme. In particular, it splits the shape axis into a primary and
+a secondary shape axis, and it adds three new axes to deal with the different
+figure versions offered by many professional fonts.
 
 Usage
 -----
