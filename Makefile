@@ -1,5 +1,6 @@
 SHELL := /bin/sh
 PDFLATEX := pdflatex
+TAR := tar
 RM := rm -rf
 INSTALL := install
 INSTALLDIR := $(INSTALL) -d
@@ -50,11 +51,19 @@ uninstall:
 	$(RM) $(TEXMFDIR)/tex/latex/$(pkg)
 	$(RM) $(TEXMFDIR)/doc/latex/$(pkg)
 
+# rule for building a tarball for CTAN
+
+.PHONY: ctan
+ctan: $(pkg).tar.gz
+
+$(pkg).tar.gz: $(pkg).ins $(pkg).dtx $(pkg).pdf README.ctan
+	$(TAR) -cz -s '/README\.ctan/README/' $^ > $@
+
 # rules for cleaning the source tree
 
 .PHONY: clean
 clean:
-	$(RM) $(pkg).sty test-$(pkg).tex
+	$(RM) $(pkg).sty test-$(pkg).tex $(pkg).tar.gz
 	$(RM) $(tempfiles)
 
 # delete files on error
