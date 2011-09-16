@@ -40,11 +40,12 @@ License
 Copyright (c) 2007 by Andreas Buehmann  
 Copyright (c) 2011 by Michael Ummels <michael.ummels@rwth-aachen.de>
 
-The LaTeX support files contained in this software may be distributed
-and modified under the terms and conditions of the
-[LaTeX Project Public License][LPPL], version 1.3c or greater (your choice).
-
-[LPPL]: http://www.latex-project.org/lppl/
+This work may be distributed and modified under the terms and conditions of the
+LaTeX Project Public License, version 1.3c or greater (your choice).
+The latest version of this license is in
+  http://www.latex-project.org/lppl.txt
+and version 1.3 or later is part of all distributions of LaTeX
+version 2005/12/01 or later.
 
 This work has the LPPL maintenance status `maintained'.
 
@@ -52,5 +53,3 @@ The Current Maintainer of this work is Michael Ummels.
 
 This work consists of the files fontaxes.dtx, fontaxes.ins and
 the derived files fontaxes.sty, test-fontaxes.tex and fontaxes.pdf.
-
-All other files distributed with these sources are in the public domain.

@@ -37,8 +37,7 @@ License
 Copyright (c) 2007 by Andreas Bühmann  
 Copyright (c) 2011 by Michael Ummels <michael.ummels@rwth-aachen.de>
 
-The LaTeX support files contained in this software may be distributed
-and modified under the terms and conditions of the
+This work may be distributed and modified under the terms and conditions of the
 [LaTeX Project Public License][LPPL], version 1.3c or greater (your choice).
 
 [LPPL]: http://www.latex-project.org/lppl/
