@@ -36,6 +36,8 @@
 \usepackage{booktabs}
 \usepackage{floatrow}
 \usepackage{hyperref}
+\usepackage{microtype}
+
 \hypersetup{
   bookmarksnumbered,
   colorlinks=false,
@@ -43,7 +45,6 @@
   pdftitle={Axes, axes, axes},
   pdfauthor={Andreas B\"uhmann, Michael Ummels}
 }
-\usepackage{microtype}
 
 \newcommand*\pkg[1]{\mbox{#1}}
 \newcommand*\acro[1]{#1}
@@ -98,10 +99,10 @@
 % Computer Modern fonts originally designed for \TeX. However, the \acro{NFSS}
 % has some limitations. In particular, it~defines only one axis for the font
 % shape, which caters for both the actual \emph{shape} of the font (e.g.\
-% upright, italic or slanted) and the \emph{case} of the font (e.g.\ mixed case
-% and small-caps). For example, if the current font shape is italic, then
-% selecting small capitals using |\scshape| or |\textsc| will revert to
-% an upright shape, even if the font has italic small capitals
+% upright, italic or slanted) and the \emph{case} of the font (e.g.\
+% upper-lower case and small-caps). For example, if the current font shape is
+% italic, then selecting small capitals using |\scshape| or |\textsc| will
+% revert to an upright shape, even if the font has italic small capitals.
 %
 % The \pkg{fontaxes} package alleviates the deficiencies of the \acro{NFSS}
 % by simulating multiple axes on top of single \acro{NFSS} axes. In particular,
