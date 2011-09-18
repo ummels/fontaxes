@@ -53,11 +53,14 @@ install: all
 	$(INSTALLDATA) $(pkg).sty $(TEXMFDIR)/tex/latex/$(pkg)
 	$(INSTALLDIR) $(TEXMFDIR)/doc/latex/$(pkg)
 	$(INSTALLDATA) $(pkg).pdf test-$(pkg).tex $(TEXMFDIR)/doc/latex/$(pkg)
+	$(INSTALLDIR) $(TEXMFDIR)/source/latex/$(pkg)
+	$(INSTALLDATA) latex/$(pkg).ins latex/$(pkg).dtx $(TEXMFDIR)/source/latex/$(pkg)
 
 .PHONY: uninstall
 uninstall:
 	$(RM) $(TEXMFDIR)/tex/latex/$(pkg)
 	$(RM) $(TEXMFDIR)/doc/latex/$(pkg)
+	$(RM) $(TEXMFDIR)/source/latex/$(pkg)
 
 # rule for cleaning the source tree
 
