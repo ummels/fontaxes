@@ -11,7 +11,7 @@ TEXMFDIR := $(shell kpsewhich -expand-var='$$TEXMFHOME')
 endif
 
 pkg := fontaxes
-tempfiles := $(pkg).aux $(pkg).log $(pkg).toc $(pkg).out
+tempfiles := $(pkg).aux $(pkg).log $(pkg).toc $(pkg).out $(pkg).hd
 
 # default rule
 
