@@ -57,7 +57,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{719}
+% \CheckSum{723}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -314,7 +314,7 @@
 % \end{macro}
 % \end{macro}
 %
-% \changes{v0.2}{2005/05/04}{Renamed |nosc| to |ulc| (upper and lower case)}
+% \changes{v0.2}{2005/05/04}{Renamed |nosc| to |ulc| (upper and lower case).}
 % \begin{macro}{\scshape}
 % \begin{macro}{\sscshape}
 % \begin{macro}{\ulcshape}
@@ -333,7 +333,7 @@
 %
 % \changes{v1.0}{2011/09/16}{Added compatibility macro}
 % \begin{macro}{\noscshape}
-%   Provide an alias for compatibility with the \pkg{slantsc} package
+%   Provide an alias for compatibility with the \pkg{slantsc} package.
 %    \begin{macrocode}
 \let\noscshape\ulcshape
 %    \end{macrocode}
@@ -392,9 +392,9 @@
 % \changes{v0.2}{2005/05/04}{Renamed |oldstyle| to |text|}
 % \begin{macro}{\figureversion}
 % \changes{v0.2}{2005/05/04}{Added abbreviated options |tab| and |prop|.}
-% This code originally appeared in the package \pkg{MinionPro}. I have adapted
-% it to work within \pkg{fontaxes}' framework and also changed some option
-% names.
+% This code originally appeared in the package \pkg{MinionPro}. We have
+% adapted it to work within \pkg{fontaxes}' framework and also changed some
+% option names.
 %    \begin{macrocode}
 \newcommand\fontaxes@fv@prefix{fontaxes@fv@switch@}
 \newcommand*\fontaxes@fv@newoption[1]%
@@ -452,7 +452,7 @@
 %
 % \noindent Axis 3: base family |\fontbasefamily{...}|
 %
-% \changes{v0.2}{2005/04/30}{Align command names with MinionPro.sty}
+% \changes{v0.2}{2005/04/30}{Align command names with MinionPro.sty.}
 % \begin{macro}{\textfigures}
 % \begin{macro}{\liningfigures}
 % \begin{macro}{\tabularfigures}
@@ -498,15 +498,13 @@
 % \subsection{Low-level author commands (Level 2)}
 %
 % \begingroup\parindent0pt\obeylines
-% |\mathweight{bold,normal}| sets |\mathversion|
-% |\mathfigurealignment{tabular,proportional}| sets |\mathversion|
-%
-% |\fontfigurestyle{text,lining}| sets |\fontfamily|
-% |\fontfigurealignment{tabular,proportional}| sets |\fontfamily|
-% |\fontbasefamily{...}| sets |\fontfamily|
-%
-% |\fontprimaryshape{n,it,sl,sw}| sets |\fontshape|
-% |\fontsecondaryshape{ulc,sc,ssc}| sets |\fontshape|
+% |\mathweight{bold,normal}| sets |\mathversion|;
+% |\mathfigurealignment{tabular,proportional}| sets |\mathversion|;
+% |\fontfigurestyle{text,lining}| sets |\fontfamily|;
+% |\fontfigurealignment{tabular,proportional}| sets |\fontfamily|;
+% |\fontbasefamily{...}| sets |\fontfamily|;
+% |\fontprimaryshape{n,it,sl,sw}| sets |\fontshape|;
+% |\fontsecondaryshape{ulc,sc,ssc}| sets |\fontshape|.
 % \endgroup
 %
 % \begin{macro}{\mathweight}
@@ -548,11 +546,12 @@
 %
 % \subsection{Internals (Layer 3)}
 % \begingroup\parindent0pt\obeylines
-% |\fontaxes@set@math| sets |\mathversion|
-% |\fontaxes@set@family| sets |\fontfamily|
-% |\fontaxes@set@shape| sets |\fontshape|
+% |\fontaxes@set@math| sets |\mathversion|;
+% |\fontaxes@set@family| sets |\fontfamily|;
+% |\fontaxes@set@shape| sets |\fontshape|.
 % \endgroup
 %
+% \changes{v1.0a}{2011/10/04}{Changed default values}
 % \begin{macro}{\fontaxes@math@weight}
 % \begin{macro}{\fontaxes@math@align}
 % \begin{macro}{\fontaxes@family@base}
@@ -560,10 +559,9 @@
 % \begin{macro}{\fontaxes@figure@align}
 % \begin{macro}{\fontaxes@shape@one}
 % \begin{macro}{\fontaxes@shape@two}
-% \changes{v1.0a}{2011/10/04}{Changed default values}
 %   The macros that hold the current values of the axes (here with some
 %   default values that will most certainly be overwritten during
-%   initializiation; see |\fontaxes@get@|\dots)
+%   initializiation; see |\fontaxes@get@|\dots).
 %    \begin{macrocode}
 \newcommand*\fontaxes@math@weight{normal}
 \newcommand*\fontaxes@math@align{tabular}
@@ -629,7 +627,7 @@
     \fi
     \ifx\fontaxes@edoc\relax
 %    \end{macrocode}
-% Try alternative
+% Try alternative.
 %    \begin{macrocode}
       \expandafter\fontaxes@split@familyalt\f@family
         \@empty\@empty\@empty\@empty\@nnil
@@ -643,12 +641,12 @@
         \edef\fontaxes@family@base{\fontaxes@split@prefix}%
         \edef\fontaxes@figure@style{\expandafter\@firstoftwo\fontaxes@edoc}%
 %    \end{macrocode}
-% Do not overwrite align (does not occur in alternative naming scheme)
+% Do not overwrite align (does not occur in alternative naming scheme).
 %    \begin{macrocode}
       \fi
     \else
 %    \end{macrocode}
-% Store values
+% Store values.
 %    \begin{macrocode}
       \edef\fontaxes@family@base{\fontaxes@split@prefix}%
       \edef\fontaxes@figure@style{\expandafter\@firstoftwo\fontaxes@edoc}%
@@ -685,7 +683,7 @@
   \fontaxes@encode@{math}{{\fontaxes@math@weight}{\fontaxes@math@align}}%
 }
 %    \end{macrocode}
-% Default is concatenation
+% Default is concatenation.
 %    \begin{macrocode}
 \newcommand*\fontaxes@encode@math@default{%
   \edef\fontaxes@code{\fontaxes@math@weight\fontaxes@math@align}}
@@ -697,7 +695,7 @@
     {{\fontaxes@family@base}{\fontaxes@figure@style}{\fontaxes@figure@align}}%
 }
 %    \end{macrocode}
-% Try different naming conventions
+% Try different naming conventions.
 %    \begin{macrocode}
 \newcommand*\fontaxes@encode@family@default{%
   \fontaxes@encode@figures
@@ -743,7 +741,7 @@
   \fontaxes@encode@{shape}{{\fontaxes@shape@one}{\fontaxes@shape@two}}%
 }
 %    \end{macrocode}
-% Default is (reverse) concatenation
+% Default is (reverse) concatenation.
 %    \begin{macrocode}
 \newcommand*\fontaxes@encode@shape@default{%
   \edef\fontaxes@code{\fontaxes@shape@two\fontaxes@shape@one}%
@@ -766,7 +764,7 @@
 % \end{macro}
 %
 % \begin{macro}{\fontaxes@naming@exception}
-%   To do: Add a user interface to specify naming exceptions
+%   To do: Add a user interface to specify naming exceptions.
 %    \begin{macrocode}
 \newcommand*\fontaxes@naming@exception[3]{%
   \expandafter\edef\csname fontaxes@encode@#1#2\endcsname{#3}%
@@ -796,7 +794,7 @@
 \fontaxes@naming@exception{figures}{{lining}{tabular}}{TLF}
 %    \end{macrocode}
 % The |j|/|x| naming convention does not know about different figure
-% alignments. Let us silently ignore these.
+% alignments; let us silently ignore these.
 %    \begin{macrocode}
 \fontaxes@naming@exception{figuresalt}{{text}{proportional}}{j}
 \fontaxes@naming@exception{figuresalt}{{text}{tabular}}{j}
@@ -839,7 +837,7 @@
 % \end{macro}
 %
 % \begin{macro}{\fontaxes@create@decode@table}
-% \changes{v0.2b}{2007/03/31}{Restore values of axes}
+% \changes{v0.2b}{2007/03/31}{Restore values of axes.}
 % |#1| name, |#2| list of axes
 %    \begin{macrocode}
 \newcommand*\fontaxes@create@decode@table[2]{%
@@ -875,7 +873,7 @@
 % \end{macro}
 %
 % \begin{macro}{\fontaxes@decode@}
-% \changes{v0.2a}{2007/03/21}{Fix error message}
+% \changes{v0.2a}{2007/03/21}{Fix error message.}
 % Interpret the decoding tables.
 %    \begin{macrocode}
 \newcommand*\fontaxes@decode@[2]{%
@@ -889,7 +887,7 @@
 %
 % \begin{macro}{\fontaxes@save}
 % \begin{macro}{\iffontaxes@changed}
-% Save states of macros for future comparison
+% Save states of macros for future comparison.
 %    \begin{macrocode}
 \newcommand*\iffontaxes@changed[1]{%
   \expandafter\ifx\csname fontaxes@last@\string#1\endcsname#1%
@@ -918,9 +916,9 @@
 %    \end{macrocode}
 %
 % \begin{macro}{\fontaxes@provide@mv@copy}
-% \changes{v0.2}{2005/04/28}{Provide default math versions by copy}
+% \changes{v0.2}{2005/04/28}{Provide default math versions by copy.}
 % Declare math version |#1| to be a copy of math version |#2| if |#1| does not
-% exist already. To accomplish this we have to know that a math version's
+% exist already. To accomplish this, we have to know that a math version's
 % configuration is basically stored in a macro |\mv@|\meta{name} (which makes
 % us dependent on the NFSS implementation; sigh \dots).
 %    \begin{macrocode}
@@ -933,7 +931,6 @@
 }
 %    \end{macrocode}
 % \end{macro}
-%
 %
 % \subsection{Tools}
 %
@@ -968,7 +965,7 @@
 % \end{macro}
 %
 % \begin{macro}{\fontaxes@split@family}
-%   Font name contains one hyphen, split there
+%   Font name contains one hyphen; split there.
 %    \begin{macrocode}
 \newcommand*\fontaxes@split@family{}
 \def\fontaxes@split@family#1-#2-#3\@nnil{%
@@ -988,9 +985,9 @@
 % \end{macro}
 %
 % \begin{macro}{\fontaxes@split@familyalt}
-% \changes{v1.0a}{2011/10/04}{Provide default suffix for lining figures}
-%   Name consists of four characters, split off the last one;
-%   if there are just three characters, the default is `x'
+% \changes{v1.0a}{2011/10/04}{Provide default suffix for lining figures.}
+%   Name consists of four characters; split off the last one.
+%   If there are just three characters, the default suffix is `x'.
 %    \begin{macrocode}
 \newcommand*\fontaxes@split@familyalt{}
 \def\fontaxes@split@familyalt#1#2#3#4#5\@nnil{%
@@ -1011,7 +1008,7 @@
 % \end{macro}
 %
 % \begin{macro}{\fontaxes@foreach}
-% \changes{v0.2}{2005/04/30}{More generic: allows an arbitrary number of axes}
+% \changes{v0.2}{2005/04/30}{More generic: allows an arbitrary number of axes.}
 % Execute |#2| for each combination of values of the axes given in |#1| (in the
 % form |{\cs}{\cs}|\dots).
 %    \begin{macrocode}
