@@ -22,10 +22,10 @@
 %
 %\iffalse
 %<*driver>
-\ProvidesFile{fontaxes.dtx}[2011/09/16 v1.0 Font selection axes]
+\ProvidesFile{fontaxes.dtx}[2011/10/04 v1.0a Font selection axes]
 %</driver>
 %<package>\NeedsTeXFormat{LaTeX2e}
-%<package>\ProvidesPackage{fontaxes}[2011/09/16 v1.0 Font selection axes]
+%<package>\ProvidesPackage{fontaxes}[2011/10/04 v1.0a Font selection axes]
 %<*driver>
 \documentclass{ltxdoc}
 
@@ -397,16 +397,16 @@
 % names.
 %    \begin{macrocode}
 \newcommand\fontaxes@fv@prefix{fontaxes@fv@switch@}
-\newcommand*\fontaxes@fv@newoption[1]
+\newcommand*\fontaxes@fv@newoption[1]%
   {\expandafter\newcommand\csname\fontaxes@fv@prefix #1\endcsname}
-\fontaxes@fv@newoption{text}        {\txfigures}
-\fontaxes@fv@newoption{osf}         {\txfigures}
-\fontaxes@fv@newoption{lining}      {\lnfigures}
-\fontaxes@fv@newoption{lf}          {\lnfigures}
-\fontaxes@fv@newoption{tabular}     {\tbfigures\tabularmath}
-\fontaxes@fv@newoption{tab}         {\tbfigures\tabularmath}
+\fontaxes@fv@newoption{text}{\txfigures}
+\fontaxes@fv@newoption{osf}{\txfigures}
+\fontaxes@fv@newoption{lining}{\lnfigures}
+\fontaxes@fv@newoption{lf}{\lnfigures}
+\fontaxes@fv@newoption{tabular}{\tbfigures\tabularmath}
+\fontaxes@fv@newoption{tab}{\tbfigures\tabularmath}
 \fontaxes@fv@newoption{proportional}{\prfigures\proportionalmath}
-\fontaxes@fv@newoption{prop}        {\prfigures\proportionalmath}
+\fontaxes@fv@newoption{prop}{\prfigures\proportionalmath}
 %    \end{macrocode}
 % We simply iterate over the list of figure versions specified in the argument
 % to |\figureversion| and check if we have specified a matching option.
@@ -560,14 +560,15 @@
 % \begin{macro}{\fontaxes@figure@align}
 % \begin{macro}{\fontaxes@shape@one}
 % \begin{macro}{\fontaxes@shape@two}
+% \changes{v1.0a}{2011/10/04}{Changed default values}
 %   The macros that hold the current values of the axes (here with some
 %   default values that will most certainly be overwritten during
 %   initializiation; see |\fontaxes@get@|\dots)
 %    \begin{macrocode}
 \newcommand*\fontaxes@math@weight{normal}
-\newcommand*\fontaxes@math@align{proportional}
-\newcommand*\fontaxes@family@base{MinionPro}
-\newcommand*\fontaxes@figure@style{text}
+\newcommand*\fontaxes@math@align{tabular}
+\newcommand*\fontaxes@family@base{cmr}
+\newcommand*\fontaxes@figure@style{lining}
 \newcommand*\fontaxes@figure@align{proportional}
 \newcommand*\fontaxes@shape@one{n}
 \newcommand*\fontaxes@shape@two{ulc}
@@ -987,7 +988,9 @@
 % \end{macro}
 %
 % \begin{macro}{\fontaxes@split@familyalt}
-%   Name consists of four characters, split off the last one
+% \changes{v1.0a}{2011/10/04}{Provide default suffix for lining figures}
+%   Name consists of four characters, split off the last one;
+%   if there are just three characters, the default is `x'
 %    \begin{macrocode}
 \newcommand*\fontaxes@split@familyalt{}
 \def\fontaxes@split@familyalt#1#2#3#4#5\@nnil{%
@@ -995,7 +998,10 @@
   \let\fontaxes@split@suffix\relax
   \edef\@tempa{#5}%
   \ifx\@tempa\@empty
-    \ifx\@empty#4\else
+    \ifx\@empty#4%
+      \def\fontaxes@split@prefix{#1#2#3}%
+      \def\fontaxes@split@suffix{x}%
+    \else
       \def\fontaxes@split@prefix{#1#2#3}%
       \def\fontaxes@split@suffix{#4}%
     \fi
