@@ -22,10 +22,10 @@
 %
 %\iffalse
 %<*driver>
-\ProvidesFile{fontaxes.dtx}[2011/10/04 v1.0a Font selection axes]
+\ProvidesFile{fontaxes.dtx}[2011/10/05 v1.0a Font selection axes]
 %</driver>
 %<package>\NeedsTeXFormat{LaTeX2e}
-%<package>\ProvidesPackage{fontaxes}[2011/10/04 v1.0a Font selection axes]
+%<package>\ProvidesPackage{fontaxes}[2011/10/05 v1.0a Font selection axes]
 %<*driver>
 \documentclass{ltxdoc}
 
@@ -551,7 +551,7 @@
 % |\fontaxes@set@shape| sets |\fontshape|.
 % \endgroup
 %
-% \changes{v1.0a}{2011/10/04}{Changed default values}
+% \changes{v1.0a}{2011/10/05}{Changed default values}
 % \begin{macro}{\fontaxes@math@weight}
 % \begin{macro}{\fontaxes@math@align}
 % \begin{macro}{\fontaxes@family@base}
@@ -564,7 +564,7 @@
 %   initializiation; see |\fontaxes@get@|\dots).
 %    \begin{macrocode}
 \newcommand*\fontaxes@math@weight{normal}
-\newcommand*\fontaxes@math@align{tabular}
+\newcommand*\fontaxes@math@align{proportional}
 \newcommand*\fontaxes@family@base{cmr}
 \newcommand*\fontaxes@figure@style{lining}
 \newcommand*\fontaxes@figure@align{proportional}
@@ -985,7 +985,7 @@
 % \end{macro}
 %
 % \begin{macro}{\fontaxes@split@familyalt}
-% \changes{v1.0a}{2011/10/04}{Provide default suffix for lining figures.}
+% \changes{v1.0a}{2011/10/05}{Provide default suffix for lining figures.}
 %   Name consists of four characters; split off the last one.
 %   If there are just three characters, the default suffix is `x'.
 %    \begin{macrocode}
