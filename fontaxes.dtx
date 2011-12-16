@@ -490,9 +490,9 @@
 % \begin{macro}{\mathfigurealignment}
 %    \begin{macrocode}
 \DeclareRobustCommand\mathweight[1]{%
-  \fontaxes@get@math \edef\fontaxes@math@weight{#1}\fontaxes@set@math}
+  \fontaxes@get@math\edef\fontaxes@math@weight{#1}\fontaxes@set@math}
 \DeclareRobustCommand\mathfigurealignment[1]{%
-  \fontaxes@get@math \edef\fontaxes@math@align{#1}\fontaxes@set@math}
+  \fontaxes@get@math\edef\fontaxes@math@align{#1}\fontaxes@set@math}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
@@ -502,11 +502,11 @@
 % \begin{macro}{\fontbasefamily}
 %    \begin{macrocode}
 \DeclareRobustCommand\fontfigurestyle[1]{%
-  \fontaxes@get@family \edef\fontaxes@figure@style{#1}\fontaxes@set@family}
+  \fontaxes@get@family\edef\fontaxes@figure@style{#1}\fontaxes@set@family}
 \DeclareRobustCommand\fontfigurealignment[1]{%
-  \fontaxes@get@family \edef\fontaxes@figure@align{#1}\fontaxes@set@family}
+  \fontaxes@get@family\edef\fontaxes@figure@align{#1}\fontaxes@set@family}
 \DeclareRobustCommand\fontbasefamily[1]{%
-  \fontaxes@get@family \edef\fontaxes@family@base{#1}\fontaxes@set@family}
+  \fontaxes@get@family\edef\fontaxes@family@base{#1}\fontaxes@set@family}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
