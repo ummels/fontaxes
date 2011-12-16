@@ -57,7 +57,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{726}
+% \CheckSum{732}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -427,27 +427,6 @@
   }%
 }
 %    \end{macrocode}
-% We have made |\figureversion| robust to protect it in moving arguments
-% (e.g., section titles). Additionally, we want it to simply be ignored when
-% hyperref is building \acro{PDF} strings (e.g., for bookmarks). The same is
-% true for similar commands, but we only include a selection of them (only the
-% forms with arguments).
-%    \begin{macrocode}
-\AtBeginDocument{
-  \@ifpackageloaded{hyperref}{%
-    \pdfstringdefDisableCommands{%
-      \let\figureversion\@gobble
-      \let\textfigures\@firstofone
-      \let\liningfigures\@firstofone
-      \let\tabularfigures\@firstofone
-      \let\proportionalfigures\@firstofone
-      \let\textsw\@firstofone
-      \let\textssc\@firstofone
-      \let\textulc\@firstofone
-    }%
-  }{}%
-}
-%    \end{macrocode}
 % \end{macro}
 %
 % \noindent Axis 3: base family |\fontbasefamily{...}|
@@ -537,12 +516,36 @@
 % \begin{macro}{\fontsecondaryshape}
 %    \begin{macrocode}
 \DeclareRobustCommand\fontprimaryshape[1]{%
-  \fontaxes@get@shape \edef\fontaxes@shape@one{#1}\fontaxes@set@shape}
+  \fontaxes@get@shape\edef\fontaxes@shape@one{#1}\fontaxes@set@shape}
 \DeclareRobustCommand\fontsecondaryshape[1]{%
-  \fontaxes@get@shape \edef\fontaxes@shape@two{#1}\fontaxes@set@shape}
+  \fontaxes@get@shape\edef\fontaxes@shape@two{#1}\fontaxes@set@shape}
 %    \end{macrocode}
 % \end{macro}
 % \end{macro}
+%
+% \changes{v1.0c}{2011/12/16}{Disabled more commands for hyperref}
+% We have made most commands robust to protect them in moving arguments
+% (e.g.\ section titles). Additionally, we want these commands to
+% be ignored when \pkg{hyperref} is building \acro{PDF} strings
+% (e.g.\ for bookmarks).
+%    \begin{macrocode}
+\AtBeginDocument{
+  \@ifpackageloaded{hyperref}{%
+    \pdfstringdefDisableCommands{%
+      \let\fontfigurestyle\@gobble
+      \let\fontfigurealignment\@gobble
+      \let\fontbasefamily\@gobble
+      \let\textfigures\@firstofone
+      \let\liningfigures\@firstofone
+      \let\tabularfigures\@firstofone
+      \let\proportionalfigures\@firstofone
+      \let\textsw\@firstofone
+      \let\textssc\@firstofone
+      \let\textulc\@firstofone
+    }%
+  }{}%
+}
+%    \end{macrocode}
 %
 % \subsection{Internals (Layer 3)}
 % \begingroup\parindent0pt\obeylines
