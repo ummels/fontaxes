@@ -57,7 +57,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{732}
+% \CheckSum{738}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -532,6 +532,8 @@
 \AtBeginDocument{
   \@ifpackageloaded{hyperref}{%
     \pdfstringdefDisableCommands{%
+      \let\fontprimaryshape\@gobble
+      \let\fontsecondaryshape\@gobble
       \let\fontfigurestyle\@gobble
       \let\fontfigurealignment\@gobble
       \let\fontbasefamily\@gobble
