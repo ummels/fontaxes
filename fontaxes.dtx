@@ -916,18 +916,9 @@
 %
 % \subsection{Compatibility}
 %
-% If no math versions |tabular| and |boldtabular| are defined in the preamble,
-% we provide defaults by copying the states of |normal| and |bold| (assuming,
-% in turn, that these two exist).
-%    \begin{macrocode}
-\AtBeginDocument{%
-  \fontaxes@provide@mv@copy{tabular}{normal}%
-  \fontaxes@provide@mv@copy{boldtabular}{bold}%
-}
-%    \end{macrocode}
-%
 % \begin{macro}{\fontaxes@provide@mv@copy}
 % \changes{v0.2}{2005/04/28}{Provide default math versions by copy.}
+% \changes{v1.0d}{2014/03/23}{Change order of macro definition and invocation.}
 % Declare math version |#1| to be a copy of math version |#2| if |#1| does not
 % exist already. To accomplish this, we have to know that a math version's
 % configuration is basically stored in a macro |\mv@|\meta{name} (which makes
@@ -942,6 +933,16 @@
 }
 %    \end{macrocode}
 % \end{macro}
+%
+% If no math versions |tabular| and |boldtabular| are defined in the preamble,
+% we provide defaults by copying the states of |normal| and |bold| (assuming,
+% in turn, that these two exist).
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \fontaxes@provide@mv@copy{tabular}{normal}%
+  \fontaxes@provide@mv@copy{boldtabular}{bold}%
+}
+%    \end{macrocode}
 %
 % \subsection{Tools}
 %
