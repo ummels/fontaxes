@@ -74,7 +74,7 @@ uninstall:
 
 .PHONY: clean
 clean:
-	$(RM) $(pkg).sty test-$(pkg).tex $(pkg).tar.gz
+	$(RM) $(pkg).sty test-$(pkg).tex test-$(pkg).pdf $(pkg).tar.gz
 	$(RM) $(tempfiles)
 
 # delete files on error
