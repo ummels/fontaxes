@@ -11,7 +11,7 @@ TEXMFDIR := $(shell kpsewhich -expand-var='$$TEXMFHOME')
 endif
 
 pkg := fontaxes
-tempfiles := $(pkg).aux $(pkg).log $(pkg).toc $(pkg).out $(pkg).hd
+tempfiles := $(pkg).aux $(pkg).log $(pkg).toc $(pkg).out $(pkg).hd test-$(pkg).aux test-$(pkg).log test-$(pkg).toc test-$(pkg).out
 
 # default rule
 
@@ -21,7 +21,7 @@ all: latex
 # rules for building the LaTeX package
 
 .PHONY: latex
-latex: $(pkg).sty test-$(pkg).tex
+latex: $(pkg).sty
 
 $(pkg).sty test-$(pkg).tex: $(pkg).ins $(pkg).dtx
 	$(PDFLATEX) $(pkg).ins
@@ -37,12 +37,20 @@ $(pkg).pdf: $(pkg).dtx
 	  $(PDFLATEX) $(pkg).dtx; \
 	done)
 
+# rules for building the test document
+
+.PHONY: test
+test: test-$(pkg).pdf
+
+test-$(pkg).pdf: test-$(pkg).tex
+	$(PDFLATEX) test-$(pkg).tex
+
 # rules for building a distribution tarball
 
 .PHONY: dist
 dist: $(pkg).tar.gz
 
-$(pkg).tar.gz: $(pkg).ins $(pkg).dtx $(pkg).pdf README.ctan
+$(pkg).tar.gz: $(pkg).ins $(pkg).dtx $(pkg).pdf test-$(pkg).tex README.ctan
 	$(TAR) -cz -s '/README\.ctan/README/' $^ > $@
 
 # rules for (un)installing everything
