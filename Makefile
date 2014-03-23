@@ -50,7 +50,7 @@ test-$(pkg).pdf: test-$(pkg).tex
 .PHONY: dist
 dist: $(pkg).tar.gz
 
-$(pkg).tar.gz: $(pkg).ins $(pkg).dtx $(pkg).pdf test-$(pkg).tex README.ctan
+$(pkg).tar.gz: $(pkg).ins $(pkg).dtx $(pkg).pdf README.ctan
 	$(TAR) -cz -s '/README\.ctan/README/' $^ > $@
 
 # rules for (un)installing everything
