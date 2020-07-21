@@ -1,5 +1,5 @@
 SHELL := /bin/sh
-PDFLATEX := pdflatex
+PDFLATEX := pdflatex -interaction nonstopmode -halt-on-error
 TAR := gtar -c -z --owner=root --group=root --mode='a+r'
 RM := rm -rf
 INSTALL := install
