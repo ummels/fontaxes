@@ -1,3 +1,4 @@
+build/
 .vscode/
 .DS_Store
 *.bak
@@ -10,9 +11,9 @@
 *.toc
 *.dvi
 *.sty
-*.drv
 *.tex
+*.drv
 *.pdf
-*.tmproj
-*.tar.gz
-*.synctex.gz
+*.glo
+*.idx
+*.zip
