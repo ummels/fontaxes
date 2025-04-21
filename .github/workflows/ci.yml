@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container:
+      image: registry.gitlab.com/islandoftex/images/texlive:latest
+    steps:
+      - name: Install figureversions
+        run: tlmgr install figureversions
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run checks
+        run: l3build check --show-log-on-error -q -H
+      - name: Archive failed test output
+        if: ${{ false }}
+        uses: zauguin/l3build-failure-artifacts@v1
+        with:
+          name: testfiles
+          retention-days: 3
+
+  build-docs:
+    runs-on: ubuntu-latest
+    container:
+      image: registry.gitlab.com/islandoftex/images/texlive:latest
+    steps:
+      - name: Install figureversions
+        run: tlmgr install figureversions
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Build documentation
+        run: l3build doc
+      - name: Move documentation
+        run: mkdir docs && mv *.pdf docs
+      - name: Upload documentation
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs'
+
+  deploy-docs:
+    needs: build-docs
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
