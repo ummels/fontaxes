@@ -23,7 +23,7 @@ all: latex
 .PHONY: latex
 latex: $(pkg).sty
 
-$(pkg).sty test-$(pkg).tex: $(pkg).ins $(pkg).dtx
+$(pkg).sty: $(pkg).ins $(pkg).dtx
 	$(PDFLATEX) $(pkg).ins
 
 # rules for building the documentation
@@ -36,14 +36,6 @@ $(pkg).pdf: $(pkg).dtx
 	(while grep -s 'Rerun to get' $(pkg).log; do \
 	  $(PDFLATEX) $(pkg).dtx; \
 	done)
-
-# rules for building the test document
-
-.PHONY: test
-test: test-$(pkg).pdf
-
-test-$(pkg).pdf: test-$(pkg).tex
-	$(PDFLATEX) test-$(pkg).tex
 
 # rules for building a distribution tarball
 
@@ -60,7 +52,7 @@ install: all
 	$(INSTALLDIR) $(TEXMFDIR)/tex/latex/$(pkg)
 	$(INSTALLDATA) $(pkg).sty $(TEXMFDIR)/tex/latex/$(pkg)
 	$(INSTALLDIR) $(TEXMFDIR)/doc/latex/$(pkg)
-	$(INSTALLDATA) $(pkg).pdf test-$(pkg).tex $(TEXMFDIR)/doc/latex/$(pkg)
+	$(INSTALLDATA) $(pkg).pdf $(TEXMFDIR)/doc/latex/$(pkg)
 	$(INSTALLDIR) $(TEXMFDIR)/source/latex/$(pkg)
 	$(INSTALLDATA) $(pkg).ins $(pkg).dtx $(TEXMFDIR)/source/latex/$(pkg)
 
@@ -74,7 +66,7 @@ uninstall:
 
 .PHONY: clean
 clean:
-	$(RM) $(pkg).sty test-$(pkg).tex test-$(pkg).pdf $(pkg).tar.gz
+	$(RM) $(pkg).sty test-$(pkg).pdf $(pkg).tar.gz
 	$(RM) $(tempfiles)
 
 # delete files on error

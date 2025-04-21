@@ -1,3 +1,4 @@
+.vscode/
 .DS_Store
 *.bak
 *.old
@@ -12,7 +13,6 @@
 *.drv
 *.tex
 *.pdf
-!fontaxes.pdf
 *.tmproj
 *.tar.gz
 *.synctex.gz
