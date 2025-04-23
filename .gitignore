@@ -11,6 +11,7 @@ build/
 *.toc
 *.dvi
 *.sty
+!*-v?.sty
 *.tex
 *.drv
 *.pdf

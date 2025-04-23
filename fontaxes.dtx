@@ -74,7 +74,7 @@
 %    \begin{macrocode}
 %<*package>
 \NeedsTeXFormat{LaTeX2e}[2018-04-01]
-\DeclareRelease{v1}{2011-09-20}{fontaxes-v1-2020-07-21.sty}
+\DeclareRelease{v1}{2011-09-20}{fontaxes-v1.sty}
 \DeclareCurrentRelease{v2}{2025-04-21}
 \ProvidesExplPackage{fontaxes}{2025-04-23}{2.0}{Font selection axes (deprecated)}
 %    \end{macrocode}
@@ -127,8 +127,8 @@
 % Otherwise, we simply load version~1 of the package.
 %    \begin{macrocode}
     \ExplSyntaxOff
-    \InputIfFileExists{fontaxes-v1-2020-07-21.sty}{}{
-      \PackageError{fontaxes}{Failed~to~load~package}%
+    \InputIfFileExists{fontaxes-v1.sty}{}{
+      \PackageError{fontaxes}{Failed~to~find~file~`fontaxes-v1.sty'}%
         {Your~installation~seems~broken.~Try~reinstalling~the~package.}
     }
     \ExplSyntaxOn
