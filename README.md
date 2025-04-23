@@ -13,7 +13,9 @@ To use this package, include
 
     \usepackage{fontaxes}
 
-in the preamble of your LaTeX document. See the PDF documentation for details.
+in the preamble of your LaTeX document. See the
+[PDF documentation](https://ummels.github.io/fontaxes/fontaxes.pdf)
+PDF documentation for details.
 
 Installation
 ------------
@@ -47,6 +49,6 @@ This work has the LPPL maintenance status `maintained'.
 The Current Maintainer of this work is Michael Ummels.
 
 This work consists of the files fontaxes.dtx, fontaxes.ins and
-the derived files fontaxes.sty, test-fontaxes.tex and fontaxes.pdf.
+the derived file fontaxes.sty.
 
 All other files distributed with these sources are in the public domain.

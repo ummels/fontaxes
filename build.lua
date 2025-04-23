@@ -1,4 +1,4 @@
--- Build configuration for fontaes
+-- Build configuration for fontaxes
 
 module = "fontaxes"
 

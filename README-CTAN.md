@@ -6,6 +6,9 @@ Selection Scheme. In particular, it splits the shape axis into a primary and
 a secondary shape axis, and it adds three new axes to deal with the different
 figure versions offered by many professional fonts.
 
+The development of this font package is hosted at
+[GitHub](https://github.com/ummels/fontaxes).
+
 Usage
 -----
 
@@ -14,25 +17,6 @@ To use this package, include
     \usepackage{fontaxes}
 
 in the preamble of your LaTeX document. See the PDF documentation for details.
-
-Installation
-------------
-
-1. Run `latex fontaxes.ins` to generate the LaTeX package.
-
-2. Create the following directories in a local texmf tree:
-
-   - doc/latex/fontaxes
-   - tex/latex/fontaxes
-
-3. Copy all necessary files into the texmf tree:
-
-   - fontaxes.pdf and test-fontaxes.tex go to doc/latex/fontaxes
-   - fontaxes.sty goes to tex/latex/fontaxes
-
-4. Afterwards, you may need to regenerate the file database:
-
-    texhash
 
 License
 -------
@@ -52,4 +36,4 @@ This work has the LPPL maintenance status `maintained'.
 The Current Maintainer of this work is Michael Ummels.
 
 This work consists of the files fontaxes.dtx, fontaxes.ins and
-the derived files fontaxes.sty, test-fontaxes.tex and fontaxes.pdf.
+the derived file fontaxes.sty.

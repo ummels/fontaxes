@@ -16,7 +16,7 @@
 % The Current Maintainer of this work is Michael Ummels.
 %
 % This work consists of the files fontaxes.dtx, fontaxes.ins and
-% the derived files fontaxes.sty, test-fontaxes.tex and fontaxes.pdf.
+% the derived file fontaxes.sty.
 %
 %<*driver>
 \documentclass[a4paper]{ltxdoc}
@@ -55,7 +55,7 @@
 %
 % \title{The fontaxes package (deprecated)}
 % \author{Michael Ummels}
-% \date{\fileversion\ -- \filedate}
+% \date{\fileversion\quad\filedate}
 % \maketitle
 %
 % \begin{abstract}
@@ -76,10 +76,9 @@
 \NeedsTeXFormat{LaTeX2e}[2018-04-01]
 \DeclareRelease{v1}{2011-09-20}{fontaxes-v1-2020-07-21.sty}
 \DeclareCurrentRelease{v2}{2025-04-21}
+\ProvidesExplPackage{fontaxes}{2025-04-23}{2.0}{Font selection axes (deprecated)}
 %    \end{macrocode}
 %    \begin{macrocode}
-\ProvidesExplPackage {fontaxes} { 2025-04-21 } { v2.0 }
-  { Font selection axes (deprecated) }
 \msg_new:nnn { fontaxes } { unsupported-axis }
   { Axis~`#1`~not~supported~for~command~\fa@naming@exception~\msg_line_context: }
 \msg_new:nnn { fontaxes } { unsupported-alignment }
