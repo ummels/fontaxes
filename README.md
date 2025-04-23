@@ -1,48 +1,18 @@
-fontaxes - Additional font axes for LaTeX
-=========================================
+# fontaxes - Additional font axes for LaTeX
 
-The fontaxes package adds several new font axes on top of LaTeX's New Font
-Selection Scheme. In particular, it splits the shape axis into a primary and
-a secondary shape axis, and it adds three new axes to deal with the different
-figure versions offered by many professional fonts.
+## Deprecation Notice
 
-Usage
------
+This package has been deprecated in favor of the
+[figureversions package](https://github.com/ummels/figureversions).
 
-To use this package, include
-
-    \usepackage{fontaxes}
-
-in the preamble of your LaTeX document. See the
-[PDF documentation](https://ummels.github.io/fontaxes/fontaxes.pdf)
-PDF documentation for details.
-
-Installation
-------------
-
-To install the package and its documentation in your home texmf tree, run:
-
-    make install
-
-If you want to use a different texmf tree, you can specify it using the
-variable TEXMFDIR:
-
-    make install TEXMFDIR=/usr/local/texlive/texmf-local
-
-Afterwards, you may need to regenerate the file database:
-
-    texhash
-
-License
--------
+## License
 
 Copyright (c) 2007 by Andreas Bühmann  
 Copyright (c) 2025 by Michael Ummels <michael.ummels@rwth-aachen.de>
 
 This work may be distributed and modified under the terms and conditions of the
-[LaTeX Project Public License][LPPL], version 1.3c or greater (your choice).
-
-[LPPL]: http://www.latex-project.org/lppl/
+[LaTeX Project Public License](https://www.latex-project.org/lppl/),
+version 1.3c or greater (your choice).
 
 This work has the LPPL maintenance status `maintained'.
 
