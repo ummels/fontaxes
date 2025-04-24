@@ -100,22 +100,22 @@
       {
         \str_if_eq:nnTF {#1} {figures}
           {
-            \str_set:Ne \str_tmpa_l { \tl_head:n { #2 } }
-            \str_set:Ne \str_tmpb_l { \tl_item:nn { #2 } { 2 } }
-            \str_if_eq:VnTF \str_tmpb_l { proportional }
+            \str_set:Ne \l_tmpa_str { \tl_head:n { #2 } }
+            \str_set:Ne \l_tmpb_str { \tl_item:nn { #2 } { 2 } }
+            \str_if_eq:VnTF \l_tmpb_str { proportional }
               {
                 \__figureversions_new_figurestyle_proportional:Vn
-                  \str_tmpa_l { #3 }
+                  \l_tmpa_str { #3 }
               }
               {
-                \str_if_eq:VnTF \str_tmpb_l { tabular }
+                \str_if_eq:VnTF \l_tmpb_str { tabular }
                 {
                   \__figureversions_new_figurestyle_tabular:Vn
-                    \str_tmpa_l { #3 }
+                    \l_tmpa_str { #3 }
                 }
                 {
                   \msg_warning:nnV { fontaxes } { unsupported-alignment }
-                    \str_tmpb_l
+                    \l_tmpb_str
                 }
               }
           }
