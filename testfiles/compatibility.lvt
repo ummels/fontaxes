@@ -1,0 +1,40 @@
+\input{regression-test}
+\input{test}
+
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{fontaxes}
+
+\makeatletter
+\fa@naming@exception{figures}{{foo}{proportional}}{LF}
+\fa@naming@exception{figures}{{foo}{tabular}}{TLF}
+\makeatother
+
+\begin{document}
+
+\fontfamily{XCharter-OsF}
+\selectfont
+
+\START
+
+\TEST{\fontprimaryshape} {
+  \fontprimaryshape{it}
+  \selectfont
+  \test{A}
+}
+
+\TEST{\fontsecondaryshape} {
+  \fontsecondaryshape{sc}
+  \selectfont
+  \test{B}
+}
+
+\TEST{\fontfigurestyle} {
+  \fontfigurestyle{foo}
+  \fontfigurealignment{tabular}
+  \selectfont
+  \test{C}
+}
+
+\END

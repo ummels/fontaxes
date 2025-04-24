@@ -1,0 +1,40 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: \fontprimaryshape 
+============================================================
+> \box...=
+\hbox(6.61+0.0)x6.06
+.\T1/XCharter-OsF/m/it/10 A
+! OK.
+<argument> \l_tmpa_box 
+l. ...}
+============================================================
+============================================================
+TEST 2: \fontsecondaryshape 
+============================================================
+> \box...=
+\hbox(6.56999+0.0)x6.04
+.\T1/XCharter-OsF/m/sc/10 B
+! OK.
+<argument> \l_tmpa_box 
+l. ...}
+============================================================
+============================================================
+TEST 3: \fontfigurestyle 
+============================================================
+LaTeX Font Info:    Trying to load font information for T1+XCharter-LF on input line ....
+(../T1XCharter-LF.fd
+File: T1XCharter-LF.fd ....-..-.. (autoinst and msharpe) Font definitions for T1/XCharter-LF.
+)
+LaTeX Font Info:    Trying to load font information for T1+XCharter-TLF on input line ....
+(../T1XCharter-TLF.fd
+File: T1XCharter-TLF.fd ....-..-.. (autoinst) Font definitions for T1/XCharter-TLF.
+)
+> \box...=
+\hbox(6.8+0.075)x6.31999
+.\T1/XCharter-TLF/m/n/10 C
+! OK.
+<argument> \l_tmpa_box 
+l. ...}
+============================================================

@@ -1,0 +1,8 @@
+\input{regression-test}
+\input{test}
+
+\documentclass{article}
+
+\START
+\usepackage{fontaxes}[=v1]
+\END
