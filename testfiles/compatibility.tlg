@@ -4,8 +4,8 @@ Don't change this file in any respect.
 TEST 1: \fontprimaryshape 
 ============================================================
 > \box...=
-\hbox(6.61+0.0)x6.06
-.\T1/XCharter-OsF/m/it/10 A
+\hbox(4.885+0.12498)x5.45999
+.\T1/XCharter-OsF/m/it/10 0
 ! OK.
 <argument> \l_tmpa_box 
 l. ...}
@@ -14,14 +14,14 @@ l. ...}
 TEST 2: \fontsecondaryshape 
 ============================================================
 > \box...=
-\hbox(6.56999+0.0)x6.04
-.\T1/XCharter-OsF/m/sc/10 B
+\hbox(4.94+0.0)x3.56
+.\T1/XCharter-OsF/m/sc/10 1
 ! OK.
 <argument> \l_tmpa_box 
 l. ...}
 ============================================================
 ============================================================
-TEST 3: \fontfigurestyle 
+TEST 3: figure selection
 ============================================================
 LaTeX Font Info:    Trying to load font information for T1+XCharter-LF on input line ....
 (../T1XCharter-LF.fd
@@ -32,8 +32,22 @@ LaTeX Font Info:    Trying to load font information for T1+XCharter-TLF on input
 File: T1XCharter-TLF.fd ....-..-.. (autoinst) Font definitions for T1/XCharter-TLF.
 )
 > \box...=
-\hbox(6.8+0.075)x6.31999
-.\T1/XCharter-TLF/m/n/10 C
+\hbox(6.8+0.0)x5.56
+.\T1/XCharter-TLF/m/n/10 2
+! OK.
+<argument> \l_tmpa_box 
+l. ...}
+============================================================
+============================================================
+TEST 4: figure selection (custom figure style)
+============================================================
+LaTeX Font Info:    Trying to load font information for T1+XCharter-Sup on input line ....
+(../T1XCharter-Sup.fd
+File: T1XCharter-Sup.fd ....-..-.. (autoinst) Font definitions for T1/XCharter-Sup.
+)
+> \box...=
+\hbox(6.83499+0.0)x3.73
+.\T1/XCharter-Sup/m/n/10 3
 ! OK.
 <argument> \l_tmpa_box 
 l. ...}

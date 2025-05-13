@@ -7,8 +7,8 @@
 \usepackage{fontaxes}
 
 \makeatletter
-\fa@naming@exception{figures}{{foo}{proportional}}{LF}
-\fa@naming@exception{figures}{{foo}{tabular}}{TLF}
+\fa@naming@exception{figures}{{foo}{proportional}}{Sup}
+\fa@naming@exception{figures}{{foo}{tabular}}{TSup}
 \makeatother
 
 \begin{document}
@@ -21,20 +21,26 @@
 \TEST{\fontprimaryshape} {
   \fontprimaryshape{it}
   \selectfont
-  \test{A}
+  \test{0}
 }
 
 \TEST{\fontsecondaryshape} {
   \fontsecondaryshape{sc}
   \selectfont
-  \test{B}
+  \test{1}
 }
 
-\TEST{\fontfigurestyle} {
-  \fontfigurestyle{foo}
+\TEST{figure selection} {
+  \fontfigurestyle{lining}
   \fontfigurealignment{tabular}
   \selectfont
-  \test{C}
+  \test{2}
+}
+
+\TEST{figure selection (custom figure style)} {
+  \fontfigurestyle{foo}
+  \selectfont
+  \test{3}
 }
 
 \END
