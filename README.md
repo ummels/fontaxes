@@ -4,6 +4,9 @@
 
 This package has been deprecated in favor of the
 [figureversions package](https://github.com/ummels/figureversions).
+See the
+[PDF documentation](https://ummels.github.io/fontaxes/fontaxes.pdf)
+for details.
 
 ## License
 
