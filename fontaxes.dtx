@@ -45,6 +45,8 @@
 \newcommand*\pkg[1]{\mbox{#1}}
 \newcommand*\axis[1]{\textit{#1}}
 
+\OnlyDescription
+
 \begin{document}
 \DocInput{fontaxes.dtx}
 \end{document}
@@ -59,24 +61,88 @@
 % \maketitle
 %
 % \begin{abstract}
-%   The \pkg{fontaxes} package simulates multiple independent font selection
-%   axes on top of certain single NFSS axes: \axis{base family},
-%   \axis{figure style}, and \axis{figure alignment} on top of \axis{family};
-%   \axis{primary shape} and \axis{secondary shape} on top of \axis{shape};
-%   and \axis{math weight} and \axis{math figure alignment} on top of
-%   \axis{math version}.
+% \textbf{Deprecated:} The \pkg{fontaxes} package simulates multiple independent
+% font selection axes on top of certain single NFSS axes: \axis{base family},
+% \axis{figure style}, and \axis{figure alignment} on top of \axis{family};
+% \axis{primary shape} and \axis{secondary shape} on top of \axis{shape};
+% and \axis{math weight} and \axis{math figure alignment} on top of
+% \axis{math version}.
 % \end{abstract}
 %
-% \StopEventually{}
+% \section{Introduction}
+%
+% When this package was conceived, \LaTeX\ support for fonts with italic
+% small-caps or \emph{swash capitals} was limited and choosing such a font
+% shape was only possible using the low-level command \cs{fontshape}. This
+% package simplified access to such shapes by introducing new commands like
+% \cs{swshape} and making combinations like \cs{itshape}\cs{scshape} work.
+% With \LaTeX\ release 2020-02-02, that functionality was integrated
+% into the kernel \cite{ltnews31}, so this package has lost its
+% main \emph{raison d'être}.
+% However, switching between different \emph{figure versions} is still
+% a hassle with \LaTeX's font selection scheme \cite{nfss}, so all commands
+% defined by \pkg{fontaxes} that deal with figure versions (e.g.\ \cs{lnfigures}
+% and \cs{tbfigures}) have been incorporated into a new package called
+% \pkg{figureversions}\footnote{\url{https://ctan.org/pkg/figureversions}},
+% released in April 2025.
+%
+% For backwards compatibility and for ensuring a smooth transition, the
+% \pkg{fontaxes} package has also been rewritten and is now a thin wrapper
+% around the \pkg{figureversions} package, providing additional commands like
+% \cs{fontprimaryshape}, which have been used in documents and (font) packages
+% in the wild.
+%
+% \section{Migration to \pkg{figureversions}}
+%
+% As a document author, if you have explicitly loaded \pkg{fontaxes}, you can
+% almost surely just replace |\usepackage{fontaxes}| by
+% |\usepackage{figureversions}|. Only if you have used \cs{fontprimaryshape}
+% or \cs{fontsecondaryshape} in your document, you need to replace that by the
+% standard \LaTeX\ command \cs{fontshape}.
+%
+% As a font package author, you might have used one of the commands
+% \cs{fa@naming@exception} or the synonymous command
+% \cs{fontaxes@naming@exception} to define a new figure version like so:
+% \begin{quote}
+%   |\fa@naming@exception{figures}{|\marg{figurestyle}|{proportional}}|\marg{suffix1} \\
+%   |\fa@naming@exception{figures}{|\marg{figurestyle}|{tabular}}|\marg{suffix2}
+% \end{quote}
+% With the \pkg{figureversions} package, you can express both commands with a
+% a single call to |\figureversions_new_figurestyle:nnn|. Since this is a
+% \LaTeX3 command, you need to put this after \cs{ExplSyntaxOn} though:
+% \begin{quote}
+%   |\ExplSyntaxOn| \\
+%   |\figureversions_new_figurestyle:nnn|\ \marg{figurestyle}\ \marg{suffix1}
+%     \ \marg{suffix2} \\
+%   |\ExplSyntaxOff|
+% \end{quote}
+% Note that there is no equivalent for other calls to |\fa@naming@exceptions|,
+% which have no effect in this version of \pkg{fontaxes} anyway.
+%
+% \StopEventually{
+% \begin{thebibliography}{9}
+%
+% \bibitem{ltnews31}
+% \LaTeX\ News. Issue 31, February 2020.
+% \url{https://www.latex-project.org/news/latex2e-news/ltnews31.pdf}
+%
+% \bibitem{nfss}
+% \LaTeX\ Project Team:
+% \LaTeXe\ font selection.
+% \url{https://www.latex-project.org/help/documentation/fntguide.pdf}
+%
+% \end{thebibliography}
+% }
 %
 % \section{Implementation}
+% \AddToHook{sffamily}{\fontfigurealignment{tabular}}
 %
 %    \begin{macrocode}
 %<*package>
 \NeedsTeXFormat{LaTeX2e}[2018-04-01]
 \DeclareRelease{v1}{2011-09-20}{fontaxes-v1.sty}
 \DeclareCurrentRelease{v2}{2025-04-21}
-\ProvidesExplPackage{fontaxes}{2025-04-23}{2.0}{Font selection axes (deprecated)}
+\ProvidesExplPackage{fontaxes}{2025-05-17}{2.0}{Font selection axes (deprecated)}
 %    \end{macrocode}
 %    \begin{macrocode}
 \msg_new:nnn { fontaxes } { unsupported-axis }
@@ -135,3 +201,5 @@
   }
 %</package>
 %    \end{macrocode}
+% \RemoveFromHook{sffamily}
+% \Finale

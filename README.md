@@ -8,7 +8,7 @@ This package has been deprecated in favor of the
 ## License
 
 Copyright (c) 2007 by Andreas Bühmann  
-Copyright (c) 2025 by Michael Ummels <michael.ummels@rwth-aachen.de>
+Copyright (c) 2025 by Michael Ummels <michael@ummels.de>
 
 This work may be distributed and modified under the terms and conditions of the
 [LaTeX Project Public License](https://www.latex-project.org/lppl/),
