@@ -100,16 +100,15 @@
 % or \cs{fontsecondaryshape} in your document, you need to replace that by the
 % standard \LaTeX\ command \cs{fontshape}.
 %
-% As a font package author, you might have used one of the commands
-% \cs{fa@naming@exception} or the synonymous command
-% \cs{fontaxes@naming@exception} to define a new figure version like so:
+% As a font package author, you might have used the command
+% \cs{fa@naming@exception} to define a new figure version like so:
 % \begin{quote}
 %   |\fa@naming@exception{figures}{|\marg{figurestyle}|{proportional}}|\marg{suffix1} \\
 %   |\fa@naming@exception{figures}{|\marg{figurestyle}|{tabular}}|\marg{suffix2}
 % \end{quote}
-% With the \pkg{figureversions} package, you can express both commands with a
+% With the \pkg{figureversions} package, you can replace both commands with a
 % a single call to |\figureversions_new_figurestyle:nnn|. Since this is a
-% \LaTeX3 command, you need to put this after \cs{ExplSyntaxOn} though:
+% \LaTeX3 command, you need to enter \LaTeX3 mode though:
 % \begin{quote}
 %   |\ExplSyntaxOn| \\
 %   |\figureversions_new_figurestyle:nnn|\ \marg{figurestyle}\ \marg{suffix1}
