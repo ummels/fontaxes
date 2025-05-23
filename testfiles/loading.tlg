@@ -5,3 +5,4 @@ Package: fontaxes ....-..-.. v... Font selection axes (deprecated)
 (../figureversions.sty
 Package: figureversions ....-..-.. v... Figure versions
 ))
+Package fontaxes Warning: Axis `shape` not supported for command \fa@naming@exception on line ...

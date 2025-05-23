@@ -5,4 +5,8 @@
 
 \START
 \usepackage{fontaxes}
+
+\makeatletter
+\fa@naming@exception{shape}{{n}{sw}}{nw}
+\makeatother
 \END

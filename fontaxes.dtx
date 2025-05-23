@@ -141,7 +141,7 @@
 \NeedsTeXFormat{LaTeX2e}[2018-04-01]
 \DeclareRelease{v1}{2011-09-20}{fontaxes-v1.sty}
 \DeclareCurrentRelease{v2}{2025-04-21}
-\ProvidesExplPackage{fontaxes}{2025-05-17}{2.0}{Font selection axes (deprecated)}
+\ProvidesExplPackage{fontaxes}{2025-05-24}{2.0.1}{Font selection axes (deprecated)}
 %    \end{macrocode}
 %    \begin{macrocode}
 \msg_new:nnn { fontaxes } { unsupported-axis }
@@ -161,7 +161,7 @@
       \__figureversions_new_figurestyle_tabular:nn { V }
     \cs_new_eq:NN \fontprimaryshape \fontshape
     \cs_new_eq:NN \fontsecondaryshape \fontshape
-    \cs_new:Npn \fa@naming@exception #1#2#3
+    \cs_new_protected:Npn \fa@naming@exception #1#2#3
       {
         \str_if_eq:nnTF {#1} {figures}
           {
