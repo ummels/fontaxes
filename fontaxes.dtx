@@ -141,20 +141,29 @@
 \NeedsTeXFormat{LaTeX2e}[2018-04-01]
 \DeclareRelease{v1}{2011-09-20}{fontaxes-v1.sty}
 \DeclareCurrentRelease{v2}{2025-04-21}
-\ProvidesExplPackage{fontaxes}{2025-05-24}{2.0.1}{Font selection axes (deprecated)}
+\ProvidesPackage{fontaxes}[2026-01-02 v2.0.2 Font selection axes (deprecated)]
 %    \end{macrocode}
+% First, we check whether the \pkg{figureversions} package exists. We cannot use
+% \cs{IfFileExists} here, since we need to execute code with \cs{ExplSyntaxOn}
+% in the positive case, but this does not work inside arguments of
+% \cs{IfFileExists}. Hence, we simply switch \cs{ExplSyntaxOn} immediately, and
+% use the corresponding \LaTeX3 conditional.
 %    \begin{macrocode}
-\msg_new:nnn { fontaxes } { unsupported-axis }
-  { Axis~`#1`~not~supported~for~command~\fa@naming@exception~\msg_line_context: }
-\msg_new:nnn { fontaxes } { unsupported-alignment }
-  { Value~`#1'~not~supported~as~figure~alignment~\msg_line_context: }
-%    \end{macrocode}
-% If the \pkg{figureversions} package exists, we require it and define some
-% compatibility macros.
-%    \begin{macrocode}
+\ExplSyntaxOn
 \file_if_exist:nTF { figureversions.sty }
   {
+%    \end{macrocode}
+% For the \pkg{figureversions} package to work, we need \LaTeX\ format
+% 2024-11-01; we can use the |\IncludeInRelease| macro to execute code
+% conditionally on the format version.
+%    \begin{macrocode}
+    \IncludeInRelease { 2024-11-01 } { fontaxes }
+      { Use~figureversions~if~present }
     \RequirePackage { figureversions }
+    \msg_new:nnn { fontaxes } { unsupported-axis }
+      { Axis~`#1`~not~supported~for~command~\fa@naming@exception~\msg_line_context: }
+    \msg_new:nnn { fontaxes } { unsupported-alignment }
+      { Value~`#1'~not~supported~as~figure~alignment~\msg_line_context: }
     \cs_generate_variant:Nn
       \__figureversions_new_figurestyle_proportional:nn { V }
     \cs_generate_variant:Nn
@@ -186,18 +195,20 @@
           }
           { \msg_warning:nnn { fontaxes } { unsupported-axis } { #1 } }
       }
+    \EndIncludeInRelease
   }
-  {
+  {}
+\ExplSyntaxOff
 %    \end{macrocode}
-% Otherwise, we simply load version~1 of the package.
+% For older releases of \LaTeX or if \pkg{figureversions} does not exit, we
+% simply fall back to version~1.
 %    \begin{macrocode}
-    \ExplSyntaxOff
-    \InputIfFileExists{fontaxes-v1.sty}{}{
-      \PackageError{fontaxes}{Failed~to~find~file~`fontaxes-v1.sty'}%
-        {Your~installation~seems~broken.~Try~reinstalling~the~package.}
-    }
-    \ExplSyntaxOn
-  }
+\IncludeInRelease{0000-00-00}{fontaxes}{Fall back to v1}
+\InputIfFileExists{fontaxes-v1.sty}{}{%
+  \PackageError{fontaxes}{Failed~to~find~file~`fontaxes-v1.sty'}%
+    {Your~installation~seems~broken.~Try~reinstalling~the~package.}%
+}
+\EndIncludeInRelease
 %</package>
 %    \end{macrocode}
 % \RemoveFromHook{sffamily}
