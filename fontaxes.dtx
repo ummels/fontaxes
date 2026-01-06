@@ -144,7 +144,7 @@
 \ProvidesPackage{fontaxes}[2026-01-02 v2.0.2 Font selection axes (deprecated)]
 %    \end{macrocode}
 % First, we check whether the \pkg{figureversions} package exists. We cannot use
-% \cs{IfFileExists} here, since we need to execute code with \cs{ExplSyntaxOn}
+% \cs{IfFileExists} here since we need to execute code with \cs{ExplSyntaxOn}
 % in the positive case, but this does not work inside arguments of
 % \cs{IfFileExists}. Hence, we simply switch \cs{ExplSyntaxOn} immediately, and
 % use the corresponding \LaTeX3 conditional.
@@ -200,7 +200,7 @@
   {}
 \ExplSyntaxOff
 %    \end{macrocode}
-% For older releases of \LaTeX or if \pkg{figureversions} does not exit, we
+% For older releases of \LaTeX or if \pkg{figureversions} does not exist, we
 % simply fall back to version~1.
 %    \begin{macrocode}
 \IncludeInRelease{0000-00-00}{fontaxes}{Fall back to v1}
