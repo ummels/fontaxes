@@ -15,7 +15,7 @@ jobs:
       image: registry.gitlab.com/islandoftex/images/texlive:latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Build
         run: l3build ctan
       - name: Release

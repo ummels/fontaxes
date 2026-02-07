@@ -22,7 +22,7 @@ jobs:
       image: registry.gitlab.com/islandoftex/images/texlive:latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Run checks
         run: l3build check --show-log-on-error -q -H
       - name: Archive failed test output
@@ -38,7 +38,7 @@ jobs:
       image: registry.gitlab.com/islandoftex/images/texlive:latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build documentation
@@ -46,7 +46,7 @@ jobs:
       - name: Move documentation
         run: mkdir docs && mv *.pdf docs
       - name: Upload documentation
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: 'docs'
 
