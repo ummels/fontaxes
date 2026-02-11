@@ -1,7 +1,6 @@
 \RequirePackage[2024/04/01]{latexrelease}
 
 \input{regression-test}
-\input{test}
 
 \documentclass{article}
 
