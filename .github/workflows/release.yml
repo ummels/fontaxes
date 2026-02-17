@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "v*.*"
+    - "v*.*"
 
 permissions:
   contents: write
@@ -11,14 +11,16 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    container:
-      image: registry.gitlab.com/islandoftex/images/texlive:latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Build
-        run: l3build ctan
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: fontaxes-ctan.zip
+    - name: Checkout
+      uses: actions/checkout@v6
+    - name: Install TeX Live
+      uses: zauguin/install-texlive@v4
+      with:
+        package_file: .github/tl_packages
+    - name: Build
+      run: l3build ctan
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: fontaxes-ctan.zip
