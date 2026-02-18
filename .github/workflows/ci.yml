@@ -18,37 +18,42 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    container:
-      image: registry.gitlab.com/islandoftex/images/texlive:latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-      - name: Run checks
-        run: l3build check --show-log-on-error -q -H
-      - name: Archive failed test output
-        if: ${{ !cancelled() }}
-        uses: zauguin/l3build-failure-artifacts@v1
-        with:
-          name: testfiles
-          retention-days: 3
+    - name: Checkout repository
+      uses: actions/checkout@v6
+    - name: Install TeX Live
+      uses: zauguin/install-texlive@v4
+      with:
+        package_file: .github/tl_packages
+    - name: Run checks
+      run: l3build check --show-log-on-error -q -H
+    - name: Archive failed test output
+      if: ${{ !cancelled() }}
+      uses: zauguin/l3build-failure-artifacts@v1
+      with:
+        name: testfiles
+        retention-days: 3
 
   build-docs:
+    needs: check
     runs-on: ubuntu-latest
-    container:
-      image: registry.gitlab.com/islandoftex/images/texlive:latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build documentation
-        run: l3build doc
-      - name: Move documentation
-        run: mkdir docs && mv *.pdf docs
-      - name: Upload documentation
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: 'docs'
+    - name: Checkout repository
+      uses: actions/checkout@v6
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+    - name: Install TeX Live
+      uses: zauguin/install-texlive@v4
+      with:
+        package_file: .github/tl_packages
+    - name: Build documentation
+      run: l3build doc
+    - name: Move documentation
+      run: mkdir docs && mv *.pdf docs
+    - name: Upload documentation
+      uses: actions/upload-pages-artifact@v4
+      with:
+        path: 'docs'
 
   deploy-docs:
     needs: build-docs
@@ -61,6 +66,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
